@@ -15,9 +15,6 @@ export const POST = {
   redirect: "follow", // manual, *follow, error
   referrer: "no-referrer", // no-referrer, *client
 }
-/**************************************
- * Reducers
- **************************************/
 //generic event type for updating state
 export const UPDATE = 'UPDATE_STATE'
 //generic reducer for updating state
@@ -33,17 +30,3 @@ export const reducer = (state, action) => {
       return state
   }
 }
-/**************************************
- * Wait for function to return true, default 50ms for 100 attempts (5s)
- **************************************/
-export const wait = (func, del = 50, lim = 100) => new Promise((resolve, reject) => {
-  let attempt = 0
-  const test = () => {
-    if (func()) resolve()
-    else if (attempt < lim) setTimeout(test, del)
-    else reject("ran out of attempts")
-    console.log('wait attempt', attempt)
-    attempt++
-  }
-  test()
-})

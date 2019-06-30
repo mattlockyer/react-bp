@@ -1,43 +1,45 @@
-import React, { Component } from 'react'
+import React, {useEffect} from 'react'
+import { connect } from 'react-redux'
 // router
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // imports
 import {
   //redux
-  connect, appState, appDispatch,
+  appState,
+  appDispatch,
   //paths
   Home, About,
   //components
-  TapBar,
+  TapBar, AppDialog,
 } from './imports'
-
-class App extends Component {
-
-  componentDidMount() {
-    this.props.appDispatch.onMount()
-  }
-
-  route = (Component, props) => {
-    props = { ...props, ...this.props }
-    return <Component {...props} />
-  }
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <div>
-            <Route exact path="/" render={(props) => this.route(Home, props)} />
-            <Route exact path="/about" render={(props) => this.route(About, props)} />
-          </div>
-          <TapBar />
-        </div>
-      </Router>
-    )
-  }
-}
 
 export default connect(
   (state) => ({ appState: appState(state) }),
   (dispatch) => ({ appDispatch: appDispatch(dispatch) })
-)(App);
+)(function App(props) {
+
+  const {
+    appState: {dialogState},
+    appDispatch: {onMount},
+  } = props
+
+  //on mount
+  useEffect(() => {
+    onMount()
+  }, []) 
+
+  //pass props to route components
+  const route = (Component, routeProps) => {
+    props = { ...routeProps, ...props }
+    return <Component {...props} />
+  }
+
+  return (
+    <Router>
+      <Route exact path="/" render={(rp) => route(Home, rp)} />
+      <Route exact path="/about" render={(rp) => route(About, rp)} />
+      <TapBar />
+      <AppDialog {...dialogState} />
+    </Router>
+  )
+})

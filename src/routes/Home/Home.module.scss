@@ -1,7 +1,6 @@
 
-@import '../../theme/theme';
+@import '../../theme/Theme.module';
 
 .root {
-  background-color: #eee;
-  padding: $padding;
+  @include page;
 }

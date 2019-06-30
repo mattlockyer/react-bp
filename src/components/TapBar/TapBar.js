@@ -1,37 +1,23 @@
-import React from 'react'
-import { withRouter } from "react-router";
-import classNames from 'classnames'
-// router
-//import { Link } from 'react-router-dom';
-// material components
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import HomeIcon from '@material-ui/icons/Home';
-import AboutIcon from '@material-ui/icons/QuestionAnswer';
-// styles
-import { tapbar } from './TapBar.module.scss'
+import React from 'react';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import {root} from './TapBar.module.scss'
 
-const TapBar = ({history}) => {
+export default function SimpleBottomNavigation() {
+  const [value, setValue] = React.useState(0);
 
-	
-	return (
-		<div>
-			<AppBar
-				className={classNames(tapbar)}
-				position="fixed"
-			>
-				<Toolbar>
-					<IconButton onClick={() => history.push('/')} color="inherit" aria-label="Open drawer">
-						<HomeIcon />
-					</IconButton>
-					<IconButton onClick={() => history.push('/about')} color="inherit" aria-label="Open drawer">
-						<AboutIcon />
-					</IconButton>
-				</Toolbar>
-			</AppBar>
-		</div>
-	)
+  return (
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+      showLabels
+      className={root}
+    >
+      <BottomNavigationAction label="Settings" icon={<i className={'fas fa-sliders-h'}></i>} />
+      <BottomNavigationAction label="Favorites" icon={<i className={'far fa-heart'}></i>} />
+      <BottomNavigationAction label="Recents" icon={<i className={'fas fa-history'}></i>} />
+    </BottomNavigation>
+  );
 }
-
-export default withRouter(TapBar)
