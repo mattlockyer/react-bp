@@ -1,0 +1,12 @@
+
+@import '../../theme/Theme.module';
+
+.root {
+  > div {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.32);
+    border-radius:0;
+    > div {
+      padding: $margin;
+    }
+  }
+}

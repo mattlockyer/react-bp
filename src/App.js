@@ -10,7 +10,7 @@ import {
   //paths
   Home, About,
   //components
-  TapBar, AppDialog,
+  TapBar, AppDialog, AppPopover,
 } from './imports'
 
 export default connect(
@@ -19,7 +19,7 @@ export default connect(
 )(function App(props) {
 
   const {
-    appState: {dialogState},
+    appState: {dialogState, popoverState},
     appDispatch: {onMount},
   } = props
 
@@ -40,6 +40,7 @@ export default connect(
       <Route exact path="/about" render={(rp) => route(About, rp)} />
       <TapBar />
       <AppDialog {...dialogState} />
+      <AppPopover {...popoverState} />
     </Router>
   )
 })

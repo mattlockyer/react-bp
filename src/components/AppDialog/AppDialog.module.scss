@@ -1,0 +1,20 @@
+
+@import '../../theme/Theme.module';
+
+.root {
+  > div {
+    > div {
+      border-radius: 0;
+      margin:0;
+      > div {
+        padding: 0 $margin $margin $margin;
+      }
+      > div:first-child {
+        padding-top: $margin;
+      }
+      > div:last-child {
+        text-align: center;
+      }
+    }
+  }
+}

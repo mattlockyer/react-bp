@@ -16,6 +16,10 @@ export const setDialogState = (newState) => async (dispatch, getState) => {
   const { dialogState } = getState().appReducer
   dispatch({ type: UPDATE, dialogState: { ...dialogState, ...newState } })
 }
+export const setPopoverState = (newState) => async (dispatch, getState) => {
+  const { popoverState } = getState().appReducer
+  dispatch({ type: UPDATE, popoverState: { ...popoverState, ...newState } })
+}
 //reducer
 export const appReducer = (state = {
   dialogState: {
