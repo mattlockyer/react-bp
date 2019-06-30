@@ -12,20 +12,26 @@ export const mount = () => async (dispatch, getState) => {
   const { toggle } = getState().appReducer
   dispatch({ type: UPDATE, toggle })
 }
-export const setDialogState = (newState) => async (dispatch, getState) => {
-  const { dialogState } = getState().appReducer
-  dispatch({ type: UPDATE, dialogState: { ...dialogState, ...newState } })
-}
-export const setPopoverState = (newState) => async (dispatch, getState) => {
-  const { popoverState } = getState().appReducer
-  dispatch({ type: UPDATE, popoverState: { ...popoverState, ...newState } })
-}
+const {setDrawerState, setDialogState, setPopoverState} = ['Drawer', 'Dialog', 'Popover'].map((name) => ({
+  ['set' + name + 'State']: (state) => async (dispatch, getState) => {
+    const stateName = name.toLowerCase() + 'State'
+    const currentState = getState().appReducer[stateName]
+    dispatch({ type: UPDATE, [stateName]: { ...currentState, ...state } })
+  }
+})).reduce((a, c) => ({...a, ...c}))
+export { setDrawerState, setDialogState, setPopoverState }
 //reducer
 export const appReducer = (state = {
+
+  drawerState: {
+    open: false,
+  },
+  popoverState: {
+    open: false,
+    anchor: window.document.getElementById('root'), //warning
+  },
   dialogState: {
     open: false,
-    title: '',
-    content: '',
   },
   toggle: false
 }, action) => reducer(state, action)

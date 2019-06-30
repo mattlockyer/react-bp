@@ -9,19 +9,21 @@
 ::-webkit-scrollbar {
   -webkit-appearance: none;
 }
-@mixin page {
-  height: 100%;
-  width: 100vw;
-  overflow:hidden;
-  overflow-x:scroll;
-  padding: $margin;
-}
 
 html, body {
   height: 100%;
   margin:0;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
+}
+
+@mixin page {
+  height: 100%;
+  width: 100vw;
+  margin-top: 56px;
+  overflow:hidden;
+  overflow-x:scroll;
+  padding: $margin;
 }
 
 p, h1, h2, h3 {

@@ -1,0 +1,22 @@
+
+@import '../../theme/Theme.module';
+
+.root {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  > header {
+    color: black;
+    background: white;
+    box-shadow: $shadow;
+    > div {
+      padding: 0;
+      > i {
+        padding: $margin;
+      }
+      > h3 {
+        margin: 0;
+      }
+    }
+  }
+}

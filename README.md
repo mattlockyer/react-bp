@@ -7,4 +7,7 @@ My own react boilerplate. Don't like it? Too bad 😅
 3. 🎉
 
 ## Contents
+- Hooks, everywhere!
+- Redux state to manage app level components (bars, drawer, popover, dialog)
+
 Too much good stuff, see `package.json`

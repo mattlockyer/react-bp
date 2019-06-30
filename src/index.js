@@ -35,16 +35,3 @@ if (rootElement.hasChildNodes()) {
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister()
-
-//material jss insertion point (enables css module overrides)
-// import JssProvider from 'react-jss/lib/JssProvider';
-// import { create } from 'jss';
-// import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
-// const generateClassName = createGenerateClassName();
-// const jss = create({
-//   ...jssPreset(),
-//   insertionPoint: document.getElementById('jss-insertion-point'),
-// });
-{/* <JssProvider jss={jss} generateClassName={generateClassName}>
-      
-    </JssProvider> */}

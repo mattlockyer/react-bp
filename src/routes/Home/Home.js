@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import { 
   setDialogState, setPopoverState,
 } from '../../imports';
-import {root} from './Home.module.scss'
+import {root} from './../common/Page.module.scss'
 
 export default function Home () {
 

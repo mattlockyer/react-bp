@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 // router
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -10,7 +10,7 @@ import {
   //paths
   Home, About,
   //components
-  TapBar, AppDialog, AppPopover,
+  AppBar, AppDrawer, AppDialog, AppPopover, TapBar,
 } from './imports'
 
 export default connect(
@@ -19,14 +19,14 @@ export default connect(
 )(function App(props) {
 
   const {
-    appState: {dialogState, popoverState},
-    appDispatch: {onMount},
+    appState: { drawerState, dialogState, popoverState },
+    appDispatch: { onMount },
   } = props
 
   //on mount
   useEffect(() => {
     onMount()
-  }, []) 
+  }, [onMount])
 
   //pass props to route components
   const route = (Component, routeProps) => {
@@ -36,6 +36,8 @@ export default connect(
 
   return (
     <Router>
+      <AppBar />
+      <AppDrawer {...drawerState} />
       <Route exact path="/" render={(rp) => route(Home, rp)} />
       <Route exact path="/about" render={(rp) => route(About, rp)} />
       <TapBar />
